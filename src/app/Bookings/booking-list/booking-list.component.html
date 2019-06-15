@@ -1,0 +1,19 @@
+<mat-card>Book My Hotel
+  <button mat-raised-button color="primary" >My Bookings</button>
+</mat-card>
+<div fxLayout="row">
+<app-filterhotel fxFlex="20%"></app-filterhotel>
+<div>
+    <app-searchhotel></app-searchhotel> 
+    <p id="custom-res">{{HotelData.length}} Results
+    <span class="sort-buttons">Sort By    Rating Only<mat-icon (click)="SortRate(rat)">swap_vertical</mat-icon> Price Only<mat-icon (click)="SortPrice(pri)">swap_vertical</mat-icon></span> </p>
+<hr>
+<div class="show-hotels" fxLayout="row wrap">
+    <div *ngFor="let hoteldata of HotelData" fxFlex>
+        <app-booking-item [InputData] = "hoteldata"  ></app-booking-item>
+    </div>
+</div>
+</div>
+</div>
+
+

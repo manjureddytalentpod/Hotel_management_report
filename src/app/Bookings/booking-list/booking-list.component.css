@@ -1,0 +1,19 @@
+#custom-res{
+ margin:auto;  
+}
+.sort-buttons{
+  float:right;
+  /* border:1px solid gray;
+  padding:1%; */
+}
+.mat-icon{
+    padding:2px;
+    cursor:pointer;
+}
+.mat-raised-button{
+    float:right;
+    font-family: cursive;
+}
+.mat-card{
+    font-family: cursive;
+}

@@ -1,0 +1,16 @@
+  <div fxLayout="row" >
+      <img class="image-size" src="../../../assets/images/hotel.jpg">
+      <div>
+        <h3>{{InputData.name}}</h3>
+        <p>{{InputData.location +' ' +InputData.city}}</p>
+        <small>{{InputData.amenities[0] }} | {{InputData.amenities[1]}} | {{InputData.amenities[2]}} </small>
+        <p><span class="star-bg">
+          <mat-icon aria-hidden="false" aria-label="Example star icon">
+            star
+          </mat-icon>
+          {{InputData.averageRating}} </span>{{'  '+ '  '+InputData.price | currency:'&#8377;'}}
+        </p>
+        <button mat-raised-button color="accent">View Details</button>
+        <button mat-raised-button color="primary">Book Now</button>
+    </div>
+  </div>

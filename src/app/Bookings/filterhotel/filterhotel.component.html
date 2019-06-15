@@ -1,0 +1,47 @@
+<div>
+<form [formGroup]="getValues">
+    <mat-card>
+      <h4>Filter</h4>
+      <mat-form-field appearance="outline"><input matInput placeholder="Search" required formControlName="search"></mat-form-field>
+    </mat-card>
+  <mat-card>
+    <h4>Type</h4>
+    <mat-checkbox formControlName="hotel">Hotel</mat-checkbox>
+    <mat-checkbox formControlName="homestay">Home Stay</mat-checkbox>
+  </mat-card>
+  <!-- <mat-card>
+      <h4>Location</h4>
+      <mat-form-field><input matInput placeholder="Search Location" required  formControlName="location"></mat-form-field>
+      <mat-checkbox>Bangalore</mat-checkbox>
+      <mat-checkbox>Chennai</mat-checkbox>
+      <mat-checkbox>Hybradrab</mat-checkbox>
+      <mat-checkbox>Delhi</mat-checkbox>
+  </mat-card> -->
+  <mat-card>
+    <h4>Rating</h4>
+    <div (click)="getRatings(4)">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" color="accent">star</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="Example home icon" color="accent">star</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="Example home icon" color="accent">star</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="Example home icon" color="accent">star</mat-icon>
+  </div>
+  <div (click)="getRatings(3)">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" color="accent">star</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="Example home icon" color="accent">star</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="Example home icon" color="accent">star</mat-icon>
+  </div>
+  <div (click)="getRatings(2)">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" color="accent">star</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="Example home icon" color="accent">star</mat-icon>
+  </div>
+  <div (click)="getRatings(1)">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" color="accent">star</mat-icon>
+  </div>
+  </mat-card>
+  <mat-card>
+    <h4>Price</h4>
+    <mat-slider min="1000" max="10000" step="100" formControlName="sliderValue"></mat-slider>
+    <p>Min:{{getValues.get('sliderValue').value}}  <span style="float:right"> Max:10000 </span> </p>
+  </mat-card>
+</form>
+</div>

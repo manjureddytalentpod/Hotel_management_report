@@ -1,0 +1,31 @@
+#conatainer-place{
+    top:30%;
+    left:35%;
+    position: fixed;
+    width:30%;
+    background-color: rgb(230, 230, 230);
+    padding:2%;
+}
+#conatainer-place .example-button-row{
+  text-align:center;
+  padding-top:2%;
+}
+.example-button-row ~ a{
+  text-align:center;
+  color:blue;
+  padding-top:2% !important;
+  font-weight: bold;
+  cursor:pointer;
+  padding-left:30%;
+}
+/* css from materila  */
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+
+  

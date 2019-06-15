@@ -1,0 +1,9 @@
+mat-slider {
+    width: 220px;
+  }
+  mat-checkbox{
+      display:block;
+  }
+  .mat-icon{
+      cursor:pointer;
+  }

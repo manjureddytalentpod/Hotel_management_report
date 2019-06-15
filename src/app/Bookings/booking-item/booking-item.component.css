@@ -1,0 +1,26 @@
+.show-hotels{
+    background-color: #e7e7e7;
+   max-width:100%;
+    height:auto;
+}
+img{
+    width:280px;
+    height:220px;
+    padding:1%;
+    
+}
+.image-size p {
+ display: block;
+}
+.mat-raised-button{
+    display:inline;
+    width:5px;
+    height:35px;
+    padding:1% !important;
+    margin:1px;
+}
+.star-bg{
+    background-color: green;
+    height:15px;
+    width:auto;
+}

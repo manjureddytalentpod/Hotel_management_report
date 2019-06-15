@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+    Hotel Booking Application
+   <span class="spacer"></span>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+<form [formGroup]="SignInForm" (ngSubmit)="getFormValue()" >
+<div id="conatainer-place">
+<div class="example-container">
+        <mat-form-field>
+            <input matInput placeholder="Enter your email" formControlName="email" required>
+            <mat-error *ngIf="FormError.email.errors">
+             <div *ngIf="FormError.email.errors.required">Email Shoud Not Empty</div>
+             <div *ngIf="FormError.email.errors.email">Enter Valid Email</div>
+          </mat-error>
+        </mat-form-field>
+         <mat-form-field>
+          <input matInput placeholder="Enter your Password" formControlName="password" required>
+         <mat-error *ngIf="FormError.password.errors">
+           <div *ngIf="FormError.password.errors.required">Password Shoud Not Be Empty</div>
+           <div *ngIf="FormError.password.errors.pattern">Password Must Have a Atleast 8 Characters One Lower Case ,One UpperCase ,One Number, One Special Character </div>
+         </mat-error>
+        </mat-form-field> 
+      </div>
+      <div class="example-button-row">
+       <button mat-raised-button color="primary" >Sign In</button>
+      </div>
+      <a  routerLink = '/signup'>New User ? <span>Signup Now</span></a>
+    </div>
+  </form>
+<div class="footer">
+</div>
