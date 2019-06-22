@@ -4,13 +4,10 @@
         <h3>{{InputData.name}}</h3>
         <p>{{InputData.location +' ' +InputData.city}}</p>
         <small>{{InputData.amenities[0] }} | {{InputData.amenities[1]}} | {{InputData.amenities[2]}} </small>
-        <p><span class="star-bg">
-          <mat-icon aria-hidden="false" aria-label="Example star icon">
-            star
-          </mat-icon>
-          {{InputData.averageRating}} </span>{{'  '+ '  '+InputData.price | currency:'&#8377;'}}
+        <p><i class="material-icons"> star</i>
+          {{InputData.averagerating}}<span style="float:right;font-weight:bold">{{'  '+ '  '+InputData.price | currency:'&#8377;'}}</span> 
         </p>
-        <button mat-raised-button color="accent">View Details</button>
-        <button mat-raised-button color="primary">Book Now</button>
+        <button mat-raised-button color="accent" [routerLink]="['/booknow/',InputData.id]">View Details</button>
+        <button mat-raised-button color="primary">Book Now</button> 
     </div>
   </div>

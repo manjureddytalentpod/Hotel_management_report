@@ -3,8 +3,8 @@
 }
 .sort-buttons{
   float:right;
-  /* border:1px solid gray;
-  padding:1%; */
+  overflow: hidden;
+  margin-top: -1%;
 }
 .mat-icon{
     padding:2px;
@@ -12,8 +12,8 @@
 }
 .mat-raised-button{
     float:right;
-    font-family: cursive;
+  
 }
-.mat-card{
-    font-family: cursive;
+.mat-icon{
+  vertical-align: middle; 
 }

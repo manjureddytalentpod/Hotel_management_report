@@ -1,0 +1,21 @@
+.bgimage
+{
+    padding:20%;
+    background-image:url('../../../assets/images/hotel.jpg');
+     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    height: 100%; 
+}
+form{
+    background-color: lightgray;
+    padding:2%;
+    border-radius: 25px;
+    overflow-y: hidden;
+}
+.mat-raised-button{
+    float:right;
+}
+.mat-toolbar{
+    overflow-y: hidden;
+}

@@ -1,0 +1,31 @@
+.mat-raised-button{
+    float:right;
+}
+.show-hotels{
+    background-color: #e7e7e7;
+   max-width:100%;
+    height:auto;
+}
+img{
+    max-width:100%;
+    max-height:5%;
+}
+.image-size p {
+ display: block;
+}
+
+.material-icons{
+    vertical-align: middle; 
+}
+figure {
+    display: inline-block;
+    border: 1px dotted gray;
+    margin: 20px; /* adjust as needed */
+}
+figure img {
+    vertical-align: top;
+}
+figure figcaption {
+    border: 1px dotted blue;
+    text-align: center;
+}

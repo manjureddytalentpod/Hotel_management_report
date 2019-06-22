@@ -1,3 +1,32 @@
-<p>
-  booking-hotel works!
-</p>
+<form [formGroup]="formdata" (ngSubmit)="onSubmit()">
+<img src="../../../assets/images/hotel.jpg" style="width: 100%;height:300px;">
+<p><b>Name</b>:{{HotelData.name}}</p>
+<p><b>Price</b>:{{HotelData.price * noofdays}}</p>
+<p><b>Guest</b>:{{HotelData.capacity}}</p>
+<p><b>Location</b>:{{HotelData.city}}</p>
+    <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="From date" formControlName="sdate" >
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field>
+    <input matInput [matDatepicker]="picker1" placeholder="To date" [min]="formdata.get('sdate').value" formControlName="todate">
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button mat-raised-button class="booknow" color="primary" (click)="conform()">Book Now</button>
+</form>
+<mat-card *ngFor="let reviews of HotelData.reviews">
+  <div style="width:20%;display:inline-block">
+   <figure> <img src="../../../assets/images/avatar.jpg" style="width:100px;height:70px;">
+   <figcaption>{{reviews.reviewed_by.name}}</figcaption>
+  </figure>
+  </div>
+  <div class="column" style="display:inline-block">
+      <span *ngFor="let icon of [].constructor(reviews.rating)"><mat-icon>star</mat-icon></span>
+      <p> {{reviews.reviewcontent}} </p> 
+  </div>
+</mat-card>
+
+
+

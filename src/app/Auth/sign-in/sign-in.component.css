@@ -1,8 +1,11 @@
-body {
-    margin:0px;
-    padding:0px;
-    font-family: sans-serif;
-    /* background-image:url('./assets/images/bg.jpg'); */
+.bgimage
+{
+    padding:20%;
+    background-image: url('../../../assets/images/hotel.jpg');
+     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    height: 100%; 
 }
 .header{
     background: #000;
@@ -11,7 +14,6 @@ body {
     left:0px;
     top:0px;
     height:8%;
-
     width:100%;
 }
 .footer{
@@ -35,7 +37,8 @@ body {
     left:35%;
     position: fixed;
     width:30%;
-    background-color: rgb(230, 230, 230);
+    background-color: lightgray;
+ 
     padding:2%;
 
 }
@@ -50,7 +53,6 @@ body {
 .text-center{
     cursor:pointer !important;
     padding-top:1% !important;
-
 }
 
 #conatainer-place .example-button-row{
@@ -79,5 +81,8 @@ body {
   
   .example-container > * {
     width: 100%;
+  }
+  a{
+    margin-top:1%;
   }
   

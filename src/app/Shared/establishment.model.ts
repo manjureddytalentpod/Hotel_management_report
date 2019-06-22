@@ -1,20 +1,24 @@
-import { Review } from "./review.model";
-import { Booking } from "./booking.model";
-import { User } from "./user.model";
+import { Review } from './review.model';
+import { Booking } from './booking.model';
+import { User } from './user.model';
 
 export class Establishment {
-    id:number;
-    name:string;
+    id: number;
+    name: string;
     type: string;
     price: number;
-    location :string;
+    location: string;
     city: string;
     capacity: number;
     isBlock: boolean;
-    averageRating : number;
+    averagerating: number;
     reviews: Review[];
     bookingList: Booking[];
     amenities: string[];
-    owner: User; 
+    owner: User ;
+    constructor(name: string, avaverageRating: number, price: number) {
+        this.name = name;
+        this.averagerating = avaverageRating;
+        this.price = price;
+    }
 }
- 

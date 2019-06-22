@@ -1,4 +1,3 @@
-<div>
 <form [formGroup]="getValues">
     <mat-card>
       <h4>Filter</h4>
@@ -9,14 +8,6 @@
     <mat-checkbox formControlName="hotel">Hotel</mat-checkbox>
     <mat-checkbox formControlName="homestay">Home Stay</mat-checkbox>
   </mat-card>
-  <!-- <mat-card>
-      <h4>Location</h4>
-      <mat-form-field><input matInput placeholder="Search Location" required  formControlName="location"></mat-form-field>
-      <mat-checkbox>Bangalore</mat-checkbox>
-      <mat-checkbox>Chennai</mat-checkbox>
-      <mat-checkbox>Hybradrab</mat-checkbox>
-      <mat-checkbox>Delhi</mat-checkbox>
-  </mat-card> -->
   <mat-card>
     <h4>Rating</h4>
     <div (click)="getRatings(4)">
@@ -44,4 +35,3 @@
     <p>Min:{{getValues.get('sliderValue').value}}  <span style="float:right"> Max:10000 </span> </p>
   </mat-card>
 </form>
-</div>

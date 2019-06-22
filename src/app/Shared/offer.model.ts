@@ -3,5 +3,5 @@ export class Offer {
 // accepted_by: user[];
 // merchant: user[];
 // exp_date: date;
-// status: string;  
+// status: string;
 }

@@ -8,22 +8,24 @@ import { Establishment } from 'src/app/Shared/establishment.model';
   styleUrls: ['./booking-list.component.css']
 })
 export class BookingListComponent implements OnInit {
-  HotelData:Establishment[]=[];
-  // len:number;
-  constructor(private establishmentService:EstablishmentService) { }
+  HotelData: Establishment[] = [];
+  sortingmethod: string;
+  sortingIcon: string;
+  constructor(private establishmentService: EstablishmentService) { }
 
   ngOnInit() {
+    this.sortingmethod = 'asc';
       this.establishmentService.establishmentSubject.subscribe(
         objData => this.HotelData = objData);
         this.establishmentService.getEstablishmentValue();
-        //this.len = this.HotelData.length;
   }
-  SortRate(val){
-    this.establishmentService.getSortValues(val);
+  Sort(val: string) {
+      if (this.sortingmethod === 'asc') {
+          this.establishmentService.getSortValuesAsc(val);
+          this.sortingmethod = 'desc';
+      } else {
+          this.establishmentService.getSortValuesDesc(val);
+          this.sortingmethod = 'asc';
+      }
   }
-  SortPrice(val){
-    this.establishmentService.getSortValues(val);
   }
-    
-     
-}

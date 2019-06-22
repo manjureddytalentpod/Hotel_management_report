@@ -21,6 +21,9 @@ img{
 }
 .star-bg{
     background-color: green;
-    height:15px;
+    height:auto !important;
     width:auto;
+}
+.material-icons{
+    vertical-align: middle; 
 }

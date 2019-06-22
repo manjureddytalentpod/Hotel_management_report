@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+    Hotel Booking Application
+  <div class="mar">
+   <button mat-raised-button routerLink="mybookings" *ngIf="isSignedIn"> My Bookings </button>
+   <button mat-raised-button routerLink="/EditProfile" *ngIf="isSignedIn"> Edit Profile </button>
+   <button mat-raised-button  (click)="logout()" *ngIf="isSignedIn"> LogOut </button>
+  </div>  
+  </mat-toolbar-row>
+</mat-toolbar>

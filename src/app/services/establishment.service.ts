@@ -1,50 +1,93 @@
 import { Injectable } from '@angular/core';
 import { Establishment } from '../Shared/establishment.model';
 import { User } from '../Shared/user.model';
-import { Observable,of,Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
+import { Review } from '../Shared/review.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EstablishmentService {
- 
-  establishmentSubject = new Subject<Establishment[]>();
-  establishment = [
-    { id: 1, name: "Hotel Grand", type: "hotel", location: "Egmore", city: "Chennai", capacity: 2 , price: 5000, isBlock: false, averageRating: 4.2, reviews: [],bookingList: [],amenities: [ "Car parking", "First Aid" , "Wi-fi"], owner: new User() },
-    { id: 2, name: "Hotel Taj", type: "hotel", location: "Guindy", city: "Chennai", capacity: 1 , price: 6000, isBlock: false, averageRating: 4.4, reviews: [],bookingList: [],amenities: [ "Car parking", "First Aid" , "Wi-fi"], owner: new User() },
-    { id: 3, name: "Hotel Trident", type: "hotel", location: "Adayar", city: "Chennai", capacity: 3 , price: 5500, isBlock: false, averageRating: 3.0, reviews: [],bookingList: [],amenities: [ "Car parking", "First Aid" , "Wi-fi"], owner: new User() },
-    { id: 4, name: "Park Plaza", type: "hotel", location: "Adayar", city: "Chennai", capacity: 2 , price: 4000, isBlock: false, averageRating: 2.5, reviews: [],bookingList: [],amenities: [ "Air-conditioned", "First Aid" , "Wi-fi"], owner: new User() },
-    { id: 5, name: "Le Meridien", type: "hotel", location: "Mylapore", city: "Chennai", capacity: 1 , price: 7500, isBlock: false, averageRating: 4.7, reviews: [],bookingList: [],amenities: [ "Car parking", "Air-conditioned"], owner: new User() },
-    { id: 6, name: "Oberois Hotels", type: "hotel", location: "Egmore", city: "Chennai", capacity: 2 , price: 7000, isBlock: false, averageRating: 4.8, reviews: [],bookingList: [],amenities: [ "Car parking", "Air-conditioned" , "Wi-fi"], owner: new User() },
-    { id: 7, name: "Lovely Homes", type: "homestay", location: "Mylapore", city: "Chennai", capacity: 1 , price: 2500, isBlock: false, averageRating: 5.0, reviews: [],bookingList: [],amenities: [ "Car parking", "Wi-fi"], owner: new User() },
-    { id: 8, name: "Paradise Inn", type: "homestay", location: "Egmore", city: "Chennai", capacity: 2 , price: 3000, isBlock: false, averageRating: 4.8, reviews: [],bookingList: [],amenities: [ "Car parking", "First Aid" , "Wi-fi"], owner: new User() },
-    { id: 9, name: "Green city", type: "homestay", location: "Adayar", city: "Chennai", capacity: 2 , price: 1500, isBlock: false, averageRating: 4.9, reviews: [],bookingList: [],amenities: [ "Car parking"], owner: new User() }
-  ]
+  review: Review[] = [
+    {id: 1, rating: 4, reviewed_by: new User('naveen'),
+    establishment: new Establishment('Manju', 5, 1200),
+     reviewcontent: 'Very good hotel'},
+    {id: 1, rating: 1, reviewed_by: new User('suresh'),
+    establishment: new Establishment('Manju', 5, 1200),
+    reviewcontent: 'best for Honeymoon'},
+    {id: 1, rating: 3, reviewed_by: new User('man'),
+    establishment: new Establishment('Manju', 5, 1200),
+    reviewcontent: 'only good for couples'},
+    {id: 1, rating: 2, reviewed_by: new User('subu'),
+     establishment: new Establishment('Manju', 5, 1200),
+      reviewcontent: 'single bed, Best for Couples'},
+  ];
 
-  constructor() { }
-  getEstablishmentValue(){
-    this.establishmentSubject.next(this.establishment.slice());
+  establishmentSubject = new Subject<Establishment[]>();
+  establishment: Establishment[] = [ ];
+  SortValues = [];
+  searchDetails = {};
+  customSearchResult = [];
+  SingleHotelResult;
+  constructor(private http: HttpClient) {}
+  getEstablishmentValue() {
+    this.establishmentSubject.next(this.customSearchResult.slice());
   }
-  //filter the values 
-  getFilteredValues(val){
-    console.log(val);
-      let filtereddata = [];
-      filtereddata =  this.establishment.slice().filter(data => data.price >= val.sliderValue);
-      
-      if(val.search)  
-        filtereddata = filtereddata.filter(data => data.name === val.search);
-        console.log(filtereddata);
-      if(val.ratings)
-        filtereddata = filtereddata.filter(data => data.averageRating >= val.ratings);
-       
-      if(!val.hotel)
-        filtereddata = filtereddata.filter(data => data.type !== "hotel");
-      if(!val.homestay)
-       filtereddata = filtereddata.filter(data => data.type !== "homestay");
-      //  console.log(filtereddata);
-    this.establishmentSubject.next(filtereddata);
+  filtereddata : Establishment[]= [];
+  getFilteredValues(val) {
+      this.filtereddata = [];
+      this.filtereddata =  this.customSearchResult.slice().filter(data => data.price >= val.sliderValue);
+      console.log(this.filtereddata);
+      if (val.search) {
+        this.filtereddata = this.filtereddata.filter(data => data.name === val.search);
+      }
+      if ( val.ratings ) {
+        this.filtereddata = this.filtereddata.filter(data => data.averagerating >= val.ratings);
+      }
+      if (!val.hotel) {
+        this.filtereddata = this.filtereddata.filter(data => data.type !== 'hotel');
+      }
+      if (!val.homestay) {
+        this.filtereddata = this.filtereddata.filter(data => data.type !== 'homestay');
+      }
+      // this.customSearchResult = filtereddata;
+    this.establishmentSubject.next(this.filtereddata);
   }
-  getSortValues(valu){
-    
+  getSortValuesAsc(valu) {
+    if (this.filtereddata.length === 0) {
+      this.SortValues = this.customSearchResult.sort((a, b) => a[valu] - b[valu]);
+      this.establishmentSubject.next(this.SortValues);
+    } else {
+      this.SortValues = this.filtereddata.sort((a, b) => a[valu] - b[valu]);
+      this.establishmentSubject.next(this.SortValues);
+    }
   }
+  getSortValuesDesc(valu) {
+    if (this.filtereddata.length === 0) {
+      this.SortValues = this.customSearchResult.sort((a, b) => a[valu] - b[valu]);
+      this.establishmentSubject.next(this.SortValues);
+    } else {
+      this.SortValues =  this.filtereddata.sort((a, b) => b[valu] - a[valu]);
+      this.establishmentSubject.next(this.SortValues);
+    }
+  }
+  CustomSearchHotel(data) {
+    this.searchDetails =  data;
+    console.log(data);
+    this.http.get('https://api.myjson.com/bins/1g4yrl').subscribe((val: Establishment[]) => {
+      this.establishment = val;
+      console.log(this.establishment);
+      this.customSearchResult =  this.establishment.filter(values => values.city === data.location);
+     this.customSearchResult = this.customSearchResult.filter(values => values.capacity >= data.guest);
+     this.establishmentSubject.next(this.customSearchResult);
+      });
+    }
+    getsearchResult() {
+      return this.searchDetails;
+    }
+    getSingleItemDetails(data: number) {
+      this.SingleHotelResult = this.establishment.find(values => values.id === data);
+      return this.SingleHotelResult;
+    }
 }

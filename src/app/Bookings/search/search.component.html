@@ -1,0 +1,29 @@
+<div class="bgimage">
+<form [formGroup]="SearchHotel" (ngSubmit)="SarchHotel()"> 
+    <div fxLayout="row" fxLayoutGap="5%" fxLayoutAlign="space-around"> 
+       <table class="example-full-width" cellspacing="1"><tr>
+        <td><mat-form-field class="example-full-width">
+          <input matInput placeholder="Location" formControlName="location">
+          <mat-error *ngIf="FormError.location.errors">
+              <div *ngIf="FormError.location.errors.required">Enter Enter Your Location</div>
+          </mat-error>
+        </mat-form-field></td>
+        <td><mat-form-field class="example-full-width">
+            <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="FormError.date.errors">
+              <div *ngIf="FormError.date.errors.required">Please Select The Date</div>
+            </mat-error>
+        </mat-form-field></td>
+        <td><mat-form-field class="example-full-width">
+          <input matInput placeholder="No of Guests" formControlName="guest">
+          <mat-error *ngIf="FormError.guest.errors">
+            <div *ngIf="FormError.guest.errors.required">Select No Of Guest</div>
+          </mat-error>
+        </mat-form-field></td>
+       <td> <button  type="submit" mat-raised-button color="primary" style="margin-left: 30%" >Search Hotel</button></td>
+      </tr></table>
+    </div>
+    </form>
+  <!-- </div> -->
